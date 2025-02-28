@@ -10,6 +10,7 @@ const getCsrfToken = () => {
     return csrfCookie ? csrfCookie.split("=")[1] : "";
   };
 const ProtectedRoute = () => {
+  const user_name = sessionStorage.getItem("user_name");
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const [mfaEnabled, setMfaEnabled] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -54,7 +55,7 @@ const ProtectedRoute = () => {
 
   return (
     <div>
-        <h1>Bienvenido</h1>
+        <h1>Bienvenido <b>{user_name}</b></h1>
         <h3>Este es el sitio principal de Creze</h3>
         <label>
             MFA Enabled:

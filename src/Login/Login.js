@@ -42,6 +42,7 @@ export default function Login({ setIsLoggedIn }) {
       console.log(response.data.success, response.data.redirect)
       if (response.data.success) {
         sessionStorage.setItem("user_id", response.data.user_id);
+        sessionStorage.setItem("user_name", response.data.user_name);
         setIsLoggedIn(true);
         setUserId(response.data.user_id);
 

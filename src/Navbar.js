@@ -17,7 +17,7 @@ export default function Navbar({ setIsLoggedIn }) {
                 </li>
                 </ul>
                 <div className="d-flex">
-                    <a class="btn btn-outline-success ms-3" ><FontAwesomeIcon icon={faUser} /> Regístrate</a>         
+                    <a href="/register" class="btn btn-outline-success ms-3" ><FontAwesomeIcon icon={faUser} /> Regístrate</a>         
                 </div>
                 <div className="d-flex">
                     <a href="/login" class="btn btn-outline-info ms-3" type="submit"><FontAwesomeIcon icon={faRightToBracket} /> Inicia Sesión</a>

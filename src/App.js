@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import NavbarIn from './NavbarIn';
-import Login from './Login/Login';
+import { Login, Register } from './Login';
 import { useState, useEffect } from 'react';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -30,6 +30,7 @@ export default function App() {
             </div>
           } />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/mainMenu" element={
             <ProtectedRoute />
           } />
