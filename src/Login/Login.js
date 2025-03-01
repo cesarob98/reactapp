@@ -128,6 +128,7 @@ export default function Login({ setIsLoggedIn }) {
             <Form.Group className="mb-3" controlId="otpCode">
               <Form.Label>OTP Code</Form.Label>
               <Form.Control
+                autocomplete="off"
                 type="text"
                 placeholder="Enter OTP"
                 value={otpCode}

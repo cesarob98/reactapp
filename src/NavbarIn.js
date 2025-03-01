@@ -1,13 +1,12 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faRightToBracket, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 export default function NavbarIn({ setIsLoggedIn }) {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
-    window.location = "/";
   };
   return (
     <nav class="navbar sticky-top navbar-expand-lg bg-dark bg-body-tertiary"  data-bs-theme="dark">
