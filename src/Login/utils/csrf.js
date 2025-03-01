@@ -1,6 +1,6 @@
 // Utility function to get CSRF token from cookies
 export const getCsrfToken = () => {
-    const name = 'csrftoken';  // The cookie name in Django
+    const name = 'csrftoken';
     let value = "; " + document.cookie;
     let parts = value.split("; " + name + "=");
     if (parts.length === 2) {

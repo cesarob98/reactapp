@@ -47,12 +47,10 @@ export default function Register({ setIsLoggedIn }) {
           setErrorMessage(response.data.message || 'An error occurred.');
         }
       } catch (error) {
-        // Check for error.response
         if (error.response) {
           console.error('Error response:', error.response);
           setErrorMessage('Error: ' + error.response.data.message);
         } else if (error.message) {
-          // If no response, log the error message
           console.error('Error message:', error.message);
           setErrorMessage('Error: ' + error.message);
         } else {
