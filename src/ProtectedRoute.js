@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import config from './config';
 
   
 const getCsrfToken = () => {
@@ -18,7 +19,7 @@ const ProtectedRoute = () => {
   useEffect(() => {
     const fetchMfaStatus = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/get_mfa_status/", {
+        const response = await axios.get(`${config.baseURL}/get_mfa_status/`, {
           params: { user_id: sessionStorage.getItem("user_id") },
           withCredentials: true,
           headers: {
@@ -69,7 +70,7 @@ const ProtectedRoute = () => {
                         user_id: sessionStorage.getItem("user_id"),
                         mfa_enabled: ischecked
                     };
-                    const response = await axios.post('http://127.0.0.1:8000/update_mfa_enabledReact', paramData, {
+                    const response = await axios.post(`${config.baseURL}/update_mfa_enabledReact`, paramData, {
                         headers: {
                         'Content-Type': 'application/json',
                         'X-CSRFToken': getCsrfToken(),

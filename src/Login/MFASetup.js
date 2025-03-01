@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getCsrfToken } from './utils/csrf'; 
+import config from '../config';
 
 export default function MFASetup() {
   const [qrCode, setQrCode] = useState('');
@@ -10,11 +11,11 @@ export default function MFASetup() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/mfa_setupReact', {
-      withCredentials: true,  // ✅ This ensures session cookies are sent
+    axios.get(`${config.baseURL}/mfa_setupReact`, {
+      withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRFToken': getCsrfToken(),  // ✅ Include CSRF token
+        'X-CSRFToken': getCsrfToken(),
       }
     })
     .then(response => {
@@ -34,7 +35,7 @@ export default function MFASetup() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/verify_mfa', {
+      const response = await axios.post(`${config.baseURL}/verify_mfa`, {
         otp_code: otpCode,
       }, { withCredentials: true });
 

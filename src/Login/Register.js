@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { getCsrfToken } from './utils/csrf';
+import config from '../config';
 
 export default function Register({ setIsLoggedIn }) {
   const [userName, setUserName] = useState('');
@@ -27,7 +28,7 @@ export default function Register({ setIsLoggedIn }) {
     };
 
     try {
-        const response = await axios.post('http://127.0.0.1:8000/registerReact', loginData, {
+        const response = await axios.post(`${config.baseURL}/registerReact`, loginData, {
           headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCsrfToken(),

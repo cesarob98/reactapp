@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import { getCsrfToken } from './utils/csrf';
+import config from '../config';
 
 export default function Login({ setIsLoggedIn }) {
   const [userName, setUserName] = useState('');
@@ -32,7 +33,7 @@ export default function Login({ setIsLoggedIn }) {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/loginReact', loginData, {
+      const response = await axios.post(`${config.baseURL}/loginReact`, loginData, {
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken': getCsrfToken(),
@@ -65,7 +66,7 @@ export default function Login({ setIsLoggedIn }) {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/verify_mfaReact', 
+      const response = await axios.post(`${config.baseURL}/verify_mfaReact`, 
         { otp_code: otpCode, user_id: userId },
         {
           headers: {
